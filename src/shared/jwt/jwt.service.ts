@@ -14,8 +14,7 @@ export class JwtService {
         try {
             const formattedToken = token.replace('Bearer ', '');
             const decoded = jwt.verify(formattedToken, authConfig.accessKey);
-            // return await this.userService.findById(decoded.id);
-            return new UserEntity();
+            return await this.userService.findById(decoded.id);
         } catch (error) {
             return null;
         }
