@@ -7,7 +7,7 @@ import { PostEntity } from '../../posts/entities/posts.entity';
 
 export enum UserRole {
     USER = 'user',
-    REALTOR = 'realtor',
+    ADMIN = 'admin',
 }
 
 @Entity('users')
