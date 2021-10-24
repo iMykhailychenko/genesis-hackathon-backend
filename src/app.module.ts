@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { CommentsModule } from './api/comments/comments.module';
 import { FavoriteModule } from './api/favorite/favorite.module';
 import { PostsModule } from './api/posts/posts.module';
 import { UsersModule } from './api/users/users.module';
@@ -9,7 +10,7 @@ import { JwtModule } from './shared/jwt/jwt.module';
 import { AuthMiddleware } from './shared/middleware/auth.middleware';
 
 @Module({
-    imports: [TypeOrmModule.forRoot(dbConfig), FavoriteModule, PostsModule, UsersModule, JwtModule],
+    imports: [TypeOrmModule.forRoot(dbConfig), FavoriteModule, PostsModule, UsersModule, JwtModule, CommentsModule],
     controllers: [],
     providers: [],
 })

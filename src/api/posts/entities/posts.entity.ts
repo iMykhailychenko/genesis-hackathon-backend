@@ -1,5 +1,7 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
+import { CommentsService } from '../../comments/comments.service';
+import { CommentsEntity } from '../../comments/entities/comments.entity';
 import { FavoriteEntity } from '../../favorite/entities/favorite.entity';
 import { UserEntity } from '../../users/entities/users.entity';
 import { DISTRICT_FILTERS, PRICE_FILTERS, RESTAURANT_TYPE_FILTERS } from '../posts.interface';
@@ -49,4 +51,7 @@ export class PostEntity {
 
     @OneToMany(() => FavoriteEntity, favorite => favorite.post)
     favorite: FavoriteEntity[];
+
+    @OneToMany(() => CommentsEntity, comment => comment.post)
+    comments: CommentsEntity[];
 }

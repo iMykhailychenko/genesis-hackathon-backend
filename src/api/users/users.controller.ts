@@ -1,8 +1,12 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards, ValidationPipe } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+
+import { User } from '../../shared/decorators/users.decorator';
+import { AuthGuard } from '../../shared/guards/auth.guards';
 
 import CreateUserDto from './dto/join.dto';
 import { LoginDto } from './dto/login.dto';
+import { UserEntity } from './entities/users.entity';
 import { LoginInterface } from './users.interface';
 import { UsersService } from './users.service';
 
@@ -24,5 +28,13 @@ export class UsersController {
     @ApiResponse({ status: HttpStatus.OK, description: 'Ok' })
     async login(@Body(new ValidationPipe({ transform: true })) loginDto: LoginDto): Promise<LoginInterface> {
         return await this.userService.login(loginDto);
+    }
+
+    @Get('profile')
+    @ApiOperation({ summary: 'User info from token' })
+    @ApiResponse({ status: HttpStatus.OK, description: 'Ok' })
+    @UseGuards(AuthGuard)
+    async getCurrentUser(@User() user: UserEntity): Promise<UserEntity> {
+        return user;
     }
 }

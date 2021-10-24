@@ -2,6 +2,7 @@ import * as bcrypt from 'bcrypt';
 import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import authConfig from '../../../config/auth.config';
+import { CommentsEntity } from '../../comments/entities/comments.entity';
 import { FavoriteEntity } from '../../favorite/entities/favorite.entity';
 import { PostEntity } from '../../posts/entities/posts.entity';
 
@@ -44,6 +45,9 @@ export class UserEntity {
 
     @OneToMany(() => FavoriteEntity, favorite => favorite.user)
     favorite: FavoriteEntity[];
+
+    @OneToMany(() => CommentsEntity, comment => comment.user)
+    comments: CommentsEntity[];
 
     @BeforeInsert()
     async hashPassword(): Promise<void> {
