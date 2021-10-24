@@ -36,11 +36,8 @@ export class UserEntity {
     @Column({ type: 'varchar', select: false })
     password: string;
 
-    @Column({
-        type: 'simple-array',
-        nullable: true,
-    })
-    role: UserRole[];
+    @Column({ type: 'varchar', default: UserRole.USER })
+    role: UserRole;
 
     @OneToMany(() => PostEntity, posts => posts.user)
     posts: PostEntity[];

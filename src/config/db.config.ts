@@ -6,11 +6,11 @@ import { UserEntity } from '../api/users/entities/users.entity';
 
 const dbConfig: ConnectionOptions = {
     type: 'postgres',
-    host: process.env.POSTGRES_HOST,
-    database: process.env.POSTGRES_DB,
-    port: +process.env.POSTGRES_PORT,
-    username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
+    host: process.env.POSTGRES_HOST || 'localhost',
+    database: process.env.POSTGRES_DB || 'genesis-hackathon',
+    port: +process.env.POSTGRES_PORT || 5432,
+    username: process.env.POSTGRES_USER || 'genesis-hackathon',
+    password: process.env.POSTGRES_PASSWORD || 'genesis-hackathon',
     logging: false,
     entities: [UserEntity, PostEntity, FavoriteEntity],
     ssl: Boolean(process.env.DB_SSL),

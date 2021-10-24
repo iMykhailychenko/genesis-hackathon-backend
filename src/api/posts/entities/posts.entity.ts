@@ -2,18 +2,18 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'ty
 
 import { FavoriteEntity } from '../../favorite/entities/favorite.entity';
 import { UserEntity } from '../../users/entities/users.entity';
-import { DISTRICT_FILTERS, POST_STATUS } from '../posts.interface';
+import { DISTRICT_FILTERS, PRICE_FILTERS, RESTAURANT_TYPE_FILTERS } from '../posts.interface';
 
 @Entity('posts')
 export class PostEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'varchar', default: POST_STATUS })
-    status: POST_STATUS;
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    createdAt: Date;
 
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-    creationDate: Date;
+    updatedAt: Date;
 
     @Column({ type: 'int', default: 0 })
     views: number;
@@ -24,20 +24,23 @@ export class PostEntity {
     @Column({ type: 'varchar' })
     description: string;
 
-    @Column({ type: 'int' })
-    residentsAmount: number;
-
-    @Column({ type: 'varchar', default: null, nullable: true })
-    children: string;
-
-    @Column({ type: 'varchar', default: null, nullable: true })
-    pets: string;
-
     @Column({ type: 'varchar', default: null, nullable: true })
     image: string;
 
+    @Column({ type: 'varchar' })
+    address: string;
+
+    @Column({ type: 'boolean' })
+    pets: boolean;
+
     @Column('text', { array: true, nullable: true })
-    districtFilters: DISTRICT_FILTERS[];
+    district: DISTRICT_FILTERS[];
+
+    @Column('text', { array: true, nullable: true })
+    price: PRICE_FILTERS[];
+
+    @Column('text', { array: true, nullable: true })
+    restaurantType: RESTAURANT_TYPE_FILTERS[];
 
     @ManyToOne(() => UserEntity, user => user.posts)
     user: UserEntity;

@@ -11,11 +11,25 @@ export enum DISTRICT_FILTERS {
     SVIATOSHYNSKYI = 'sviatoshynskyi',
 }
 
-export enum POST_STATUS {
-    IDLE = 'idle',
-    DRAFT = 'draft',
-    ACTIVE = 'active',
-    ARCHIVE = 'archive',
+export enum PRICE_FILTERS {
+    LOW = 'low',
+    MID = 'mid',
+    HIGH = 'high',
 }
 
-export const ALL_STATUSES = [POST_STATUS.IDLE, POST_STATUS.DRAFT, POST_STATUS.ACTIVE, POST_STATUS.ARCHIVE];
+export enum RESTAURANT_TYPE_FILTERS {
+    RESTAURANT = 'restaurant',
+    BAR = 'bar',
+    CAFE = 'cafe',
+    CAFETERIA = 'cafeteria',
+    CANTEEN = 'canteen',
+    SNACK_BAR = 'snack bar',
+    BUFFET = 'buffet',
+    PROCUREMENT_FACTORIES = 'procurement_factories',
+    KITCHEN_FACTORY = 'kitchen_factory',
+    HOME_KITCHEN = 'home_kitchen',
+    SPECIAL_ORDERS = 'special_orders',
+}
+
+// ресторан, бар, кафе, кафетерий, столовая, закусочная, буфет, фабрики-заготовительные, фабрика-кухня, домовая кухня, ресторан по специальным заказам
+// restaurant, bar, cafe, cafeteria, canteen, snack bar, buffet, procurement factories, kitchen factory, home kitchen, restaurant on special orders
