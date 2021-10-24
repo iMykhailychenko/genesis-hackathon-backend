@@ -24,6 +24,6 @@ export default class CreateUserDto {
     password: string;
 
     @IsNotEmpty()
-    @IsEnum(UserRole, { each: true })
-    role: UserRole[];
+    @IsEnum(UserRole)
+    role: UserRole;
 }

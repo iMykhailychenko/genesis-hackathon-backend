@@ -35,8 +35,7 @@ export class PostsService {
             .andWhere(
                 '(((:query)::varchar IS NULL OR LOWER(posts.title) like LOWER(:query)) OR ((:query)::varchar IS NULL OR LOWER(posts.description) like LOWER(:query)))',
                 { query: searchFilters.query ? `%${searchFilters.query}%` : null },
-            )
-            .orderBy('posts.createdAt', 'DESC');
+            );
     }
 
     formatPagination<T>(data: T[], total: number, searchPostDto: SearchPostDto): Pagination<T> {
@@ -54,6 +53,7 @@ export class PostsService {
 
         const { page = 1, limit = 20 } = searchPostDto;
         const result = await sqlQuery
+            .orderBy('posts.createdAt', 'DESC')
             .offset(limit * (page - 1))
             .limit(limit)
             .getMany();

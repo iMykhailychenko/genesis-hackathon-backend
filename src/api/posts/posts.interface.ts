@@ -33,3 +33,8 @@ export enum RESTAURANT_TYPE_FILTERS {
 
 // ресторан, бар, кафе, кафетерий, столовая, закусочная, буфет, фабрики-заготовительные, фабрика-кухня, домовая кухня, ресторан по специальным заказам
 // restaurant, bar, cafe, cafeteria, canteen, snack bar, buffet, procurement factories, kitchen factory, home kitchen, restaurant on special orders
+
+export enum ORDER_BY {
+    NAME = 'name',
+    NAMR = 'name',
+}

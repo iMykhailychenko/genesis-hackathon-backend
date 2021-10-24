@@ -1,6 +1,5 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import { CommentsService } from '../../comments/comments.service';
 import { CommentsEntity } from '../../comments/entities/comments.entity';
 import { FavoriteEntity } from '../../favorite/entities/favorite.entity';
 import { UserEntity } from '../../users/entities/users.entity';
