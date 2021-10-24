@@ -17,6 +17,9 @@ export class CommentsEntity {
     @Column({ type: 'varchar' })
     text: string;
 
+    @Column({ type: 'varchar', default: null, nullable: true })
+    image: string;
+
     @ManyToOne(() => PostEntity, post => post.comments, { onDelete: 'CASCADE' })
     post: PostEntity;
 

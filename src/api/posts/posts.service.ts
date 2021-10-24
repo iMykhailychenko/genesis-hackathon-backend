@@ -36,7 +36,7 @@ export class PostsService {
                 '(((:query)::varchar IS NULL OR LOWER(posts.title) like LOWER(:query)) OR ((:query)::varchar IS NULL OR LOWER(posts.description) like LOWER(:query)))',
                 { query: searchFilters.query ? `%${searchFilters.query}%` : null },
             )
-            .orderBy('posts.creationDate', 'DESC');
+            .orderBy('posts.createdAt', 'DESC');
     }
 
     formatPagination<T>(data: T[], total: number, searchPostDto: SearchPostDto): Pagination<T> {
